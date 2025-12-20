@@ -6,11 +6,11 @@ using namespace std;
 using namespace chrono;
 
 int main() {
-    const int REPEAT = 100000; // change this to scale workload
+    const int REPEAT = 1'000'0000; // 100 MB
     string pattern =
         "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        "abcd"; // total length = 100 chars
+        "abcd"; // 100 chars
 
     string text;
     text.reserve(pattern.size() * REPEAT);
@@ -19,14 +19,15 @@ int main() {
         text += pattern;
     }
 
-    volatile long long count = 0;
+    volatile unsigned long long count = 0; // dependency blocks vectorization
 
     auto start = high_resolution_clock::now();
 
-    for (char c : text) {
+    for (size_t i = 0; i < text.size(); i++) {
+        unsigned char c = text[i];
         if ((c >= 'a' && c <= 'z') ||
             (c >= 'A' && c <= 'Z')) {
-            count++;
+            count += 1;
         }
     }
 
@@ -35,6 +36,7 @@ int main() {
 
     cout << "C++ String Parse Time: "
          << elapsed.count() << " seconds\n";
+    cout << "Count: " << count << "\n";
 
     return 0;
 }
