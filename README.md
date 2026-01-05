@@ -133,7 +133,7 @@ Planned and potential future enhancements include:
 ---
 
 ## Repository Structure
-
+```
 language-bench/
 ├── cpp/ # C++ benchmark implementations
 ├── rust/ # Rust benchmark implementations
@@ -141,7 +141,7 @@ language-bench/
 ├── charts/ # Generated charts and visuals
 ├── website/ # GitHub Pages website source
 └── README.md
-
+```
 ---
 
 ## Conclusion
