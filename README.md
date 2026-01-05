@@ -1,4 +1,4 @@
-# Language Bench — C++ vs Rust Performance Benchmarking
+# Language Bench - C++ vs Rust Performance Benchmarking
 
 ## Overview
 
