@@ -148,6 +148,3 @@ language-bench/
 
 This project provides a structured and reproducible comparison of C++ and Rust across a variety of fundamental performance benchmarks. By combining careful methodology, repeated measurements, and clear visualization, the project aims to offer practical insights into the real-world performance characteristics of modern systems programming languages.
 
-
-## Repository Structure
-
