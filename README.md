@@ -29,11 +29,18 @@ Measures sequential file read performance by reading large files from disk, eval
 ### 5. File Write Benchmark
 Measures sequential file write performance by writing large data blocks to disk, evaluating write throughput and runtime I/O overhead.
 
-### 6. String Parsing and Concatenation Benchmark
-Evaluates performance of string parsing and concatenation operations, representative of real-world text processing workloads.
+### 6. String Parsing
+Evaluates performance of character-by-character string parsing over large input sizes, representative of real-world text processing workloads.
 
-### 7. Vector Insertion and Deletion
-Measures dynamic memory and container performance by repeatedly inserting and deleting elements from a vector-like data structure. Large workloads are executed using chunked processing to respect physical memory limits while preserving the total operation count.
+### 7. String Concatenation and Substring Search
+Measures the performance of repeated string concatenation combined with substring search operations, capturing both string growth overhead and search efficiency.
+
+### 8. Dynamic Allocation and Free
+Evaluates dynamic memory allocation and deallocation performance by repeatedly allocating and freeing heap memory under increasing allocation counts.
+
+### 9. Vector Insertions and Deletions
+Measures dynamic container performance by repeatedly inserting and deleting elements froma vector-like data structure. 
+Large workloads are executed using chunked processing torespect physical memory limits while preserving the total operation count.
 
 ---
 
@@ -42,7 +49,7 @@ Measures dynamic memory and container performance by repeatedly inserting and de
 To ensure a fair and reliable comparison between C++ and Rust, the following benchmarking methodology was followed:
 
 - Identical algorithms and workloads were used in both language implementations.
-- All benchmarks were compiled in optimized (release) mode.
+- All benchmarks were compiled in optimized mode.
 - Each benchmark was executed multiple times (typically five runs).
 - Average execution time and standard deviation were calculated for each benchmark.
 - No background applications were intentionally running during benchmark execution.
@@ -84,7 +91,8 @@ Exact compiler versions and build commands are documented within the repository.
 
 ## Results
 
-All benchmark results, including individual runs, average execution times, and standard deviation values, are documented in the Google Sheets link below:
+All benchmark results, including individual runs, average execution times, and standard deviation values, are documented in the Google Sheets link below.
+A benchmark-wise breakdown with visualizations is presented in the sections that follow.
 
 📊 **Benchmark Results (Google Sheets)**  
 https://docs.google.com/spreadsheets/d/1dq5R_SiZNLLnG3HRv5nI7fb26BDp2h8v44QNyywQqNw/edit?usp=sharing
@@ -265,17 +273,6 @@ Benchmark results have been visualized using comparative charts (C++ vs Rust) fo
 
 🌐 **Benchmarking Website**  
 [Link to website – to be added]
-
----
-
-## Observations
-
-- C++ and Rust demonstrate comparable performance across most benchmarks.
-- Performance differences are generally small and often fall within the observed standard deviation.
-- Both languages scale linearly with increasing workload sizes for CPU-bound benchmarks.
-- I/O- and memory-heavy benchmarks highlight differences in runtime behavior and optimization strategies.
-
-Detailed observations for each benchmark are available in the summary tables and visualizations.
 
 ---
 
