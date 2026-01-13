@@ -200,8 +200,8 @@ Overall, Rust demonstrates more efficient handling of large-scale string parsing
 
 ### 7. String Concatenation and Substring Search
 
-![String Concatenation and Substring Search - Large Workloads](charts/StringConcatenationSubstringSearch_large.png)
-![String Concatenation and Substring Search - Small Workloads](charts/StringConcatenationSubstringSearch_small.png)
+![String Concatenation and Substring Search - Large Workloads](charts/StringConcatenationSubStringSearch_large.png)
+![String Concatenation and Substring Search - Small Workloads](charts/StringConcatenationSubStringSearch_small.png)
 
 **What this benchmark tests:**  
 Measures the performance of repeated string concatenation combined with substring search operations.
