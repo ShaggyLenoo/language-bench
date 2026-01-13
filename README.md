@@ -272,7 +272,7 @@ These results highlight that neither language is universally faster; performance
 Benchmark results have been visualized using comparative charts (C++ vs Rust) for each benchmark and workload size. These visualizations, along with methodology and observations, are presented on a static website hosted using **GitHub Pages**.
 
 🌐 **Benchmarking Website**  
-[Link to website – to be added]
+[Website](https://shaggylenoo.github.io/language-bench/)
 
 ---
 
