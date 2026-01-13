@@ -99,8 +99,8 @@ A summary table consolidating results across all benchmarks and workloads was cr
 
 ### 1. Summation Loop
 
-![Summation Loop – Large Workloads](charts/summation_large.png)
-![Summation Loop – Small Workloads](charts/summation_small.png)
+![Summation Loop – Large Workloads](charts/SummationLoop_large.png)
+![Summation Loop – Small Workloads](charts/SummationLoop_small.png)
 
 **What this benchmark tests:**  
 Measures raw arithmetic throughput and loop execution efficiency across increasing iteration counts.
