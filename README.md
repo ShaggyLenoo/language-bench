@@ -93,6 +93,122 @@ A summary table consolidating results across all benchmarks and workloads was cr
 
 ---
 
+## Benchmark Results
+
+---
+
+### 1. Summation Loop
+
+![Summation Loop – Large Workloads](charts/summation_large.png)
+![Summation Loop – Small Workloads](charts/summation_small.png)
+
+**What this benchmark tests:**  
+Measures raw arithmetic throughput and loop execution efficiency across increasing iteration counts.
+
+**Observations:**
+- For very large workloads (10 billion iterations), C++ and Rust show nearly identical performance, with Rust being marginally faster.
+- At mid-range workloads (1 billion and 100 million iterations), C++ consistently executes faster than Rust.
+- For small workloads (10 million iterations), absolute execution times are very low, but C++ maintains a slight advantage.
+
+Overall, C++ demonstrates lower overhead for tight arithmetic loops, especially at mid-scale workloads.
+
+---
+
+### 2. Branch Loop
+
+**What this benchmark tests:**  
+Evaluates performance under branch-heavy execution, focusing on conditional logic and branch prediction behavior.
+
+**Observations:**
+- For large workloads (10 billion and 1 billion iterations), Rust outperforms C++, indicating more efficient handling of branch-heavy code paths in this scenario.
+- At smaller workloads (100 million and 10 million iterations), execution times for both languages converge, with only minor differences.
+
+Rust shows a consistent advantage in large branch-intensive workloads, while both languages perform similarly at smaller scales.
+
+---
+
+### 3. Fibonacci Recursion
+
+**What this benchmark tests:**  
+Measures recursive function call overhead and stack management behavior.
+
+**Observations:**
+- At very large recursion counts, Rust significantly outperforms C++, completing deep recursive workloads much faster.
+- At mid-range recursion depths, C++ performs better than Rust.
+- At smaller recursion depths, Rust again shows lower execution time.
+
+Performance alternates depending on recursion depth, suggesting different optimization strategies and call-handling overheads between the two languages.
+
+---
+
+### 4. File Read
+
+**What this benchmark tests:**  
+Evaluates disk I/O performance while reading files of varying sizes.
+
+**Observations:**
+- For large files (1 GB and 500 MB), Rust consistently reads data faster than C++.
+- At medium file sizes (100 MB), performance between C++ and Rust is nearly identical.
+- For small files (10 MB), C++ performs better than Rust.
+
+Since the workload is I/O-bound, language-level differences are secondary to filesystem and OS behavior, becoming more noticeable only at smaller file sizes.
+
+---
+
+### 5. File Write
+
+**What this benchmark tests:**  
+Measures disk write performance for files of varying sizes.
+
+**Observations:**
+- For very large files (1 GB), C++ shows slightly better performance.
+- At medium and small file sizes (500 MB and below), Rust consistently outperforms C++.
+- Performance differences decrease as file size decreases, but Rust maintains a small advantage in most cases.
+
+File write performance is influenced heavily by buffering and filesystem behavior, with Rust showing better performance for repeated medium-sized writes.
+
+---
+
+### 6. String Parsing and Concatenation
+
+**What this benchmark tests:**  
+Measures performance of string parsing, concatenation, and substring operations over large inputs.
+
+**Observations:**
+- Rust significantly outperforms C++ across all tested input sizes.
+- The performance gap is largest at very large input sizes and remains consistent as input size decreases.
+- Rust completes string-heavy workloads in substantially less time than C++.
+
+These results indicate more efficient string handling and memory management in Rust for this workload.
+
+---
+
+### 7. Vector Insertion and Deletion
+
+**What this benchmark tests:**  
+Evaluates dynamic array performance under repeated insertions and deletions.
+
+**Observations:**
+- For large workloads (1 billion and 500 million operations), Rust consistently outperforms C++.
+- At mid-range workloads (100 million operations), Rust maintains a measurable advantage.
+- For small workloads (10 million operations), execution times are nearly identical.
+
+Rust demonstrates better scalability for large-scale dynamic container operations, while differences diminish at smaller scales.
+
+---
+
+## Results Summary
+
+Across the benchmarks, performance depends strongly on workload characteristics:
+
+- **C++** performs well in tight arithmetic loops and certain recursive workloads.
+- **Rust** shows clear advantages in branch-heavy execution, string processing, vector operations, and most I/O scenarios.
+- Differences are most visible at larger workloads, while smaller workloads often converge in execution time.
+- Low standard deviation across benchmarks indicates stable and repeatable measurements.
+
+These results highlight that neither language is universally faster; performance varies based on the nature of the workload and execution pattern.
+
+
 ## Visualization and Website
 
 Benchmark results have been visualized using comparative charts (C++ vs Rust) for each benchmark and workload size. These visualizations, along with methodology and observations, are presented on a static website hosted using **GitHub Pages**.
