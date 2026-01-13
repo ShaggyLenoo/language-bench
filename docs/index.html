@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Language Bench – C++ vs Rust</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Language Bench: C++ vs Rust Performance Benchmarking</h1>
+
+<p>
+This website presents a systematic performance comparison between C++ and Rust
+across a set of core benchmarks. The benchmarks were executed under identical
+conditions, and results are visualized below.
+</p>
+
+<h2>System Configuration</h2>
+<ul>
+  <li>CPU: Intel Core i5-1235U</li>
+  <li>RAM: 8 GB</li>
+  <li>OS: Windows 11 (24H2)</li>
+</ul>
+
+<h2>Benchmark Results</h2>
+
+<h3>1. Summation Loop</h3>
+<img src="charts/SummationLoop_large.png">
+<img src="charts/SummationLoop_small.png">
+
+<h3>2. Branch-Heavy Loop</h3>
+<img src="charts/BranchLoop_large.png">
+<img src="charts/BranchLoop_small.png">
+
+<h3>3. Fibonacci Recursion</h3>
+<img src="charts/FibonacciRecursion_large.png">
+<img src="charts/FibonacciRecursion_small.png">
+
+<h3>4. File Read</h3>
+<img src="charts/FileRead_large.png">
+<img src="charts/FileRead_small.png">
+
+<h3>5. File Write</h3>
+<img src="charts/FileWrite_large.png">
+<img src="charts/FileWrite_small.png">
+
+<h3>6. String Parsing</h3>
+<img src="charts/StringParsing_large.png">
+<img src="charts/StringParsing_small.png">
+
+<h3>7. String Concatenation and Substring Search</h3>
+<img src="charts/StringConcatenationSubstringSearch_large.png">
+<img src="charts/StringConcatenationSubstringSearch_small.png">
+
+<h3>8. Dynamic Allocation and Free</h3>
+<img src="charts/DynamicAllocation_large.png">
+<img src="charts/DynamicAllocation_small.png">
+
+<h3>9. Vector Insertion and Deletion</h3>
+<img src="charts/Vector_large.png">
+<img src="charts/Vector_small.png">
+
+<h2>Conclusion</h2>
+<p>
+This benchmarking study highlights how performance characteristics of C++ and Rust
+vary depending on workload type and scale. Neither language is universally faster;
+performance depends strongly on execution patterns and resource usage.
+</p>
+
+</body>
+</html>
