@@ -116,6 +116,9 @@ Overall, C++ demonstrates lower overhead for tight arithmetic loops, especially 
 
 ### 2. Branch Loop
 
+![Branch Loop – Large Workloads](charts/BranchLoop_large.png)
+![Branch Loop – Small Workloads](charts/BranchLoop_small.png)
+
 **What this benchmark tests:**  
 Evaluates performance under branch-heavy execution, focusing on conditional logic and branch prediction behavior.
 
@@ -128,6 +131,9 @@ Rust shows a consistent advantage in large branch-intensive workloads, while bot
 ---
 
 ### 3. Fibonacci Recursion
+
+![Fibonacci Recursion – Large Workloads](charts/FibonacciRecursion_large.png)
+![Fibonacci Recursion – Small Workloads](charts/FibonacciRecursion_small.png)
 
 **What this benchmark tests:**  
 Measures recursive function call overhead and stack management behavior.
@@ -143,6 +149,9 @@ Performance alternates depending on recursion depth, suggesting different optimi
 
 ### 4. File Read
 
+![File Read – Large Workloads](charts/FileRead_large.png)
+![File Read – Small Workloads](charts/FileRead_small.png)
+
 **What this benchmark tests:**  
 Evaluates disk I/O performance while reading files of varying sizes.
 
@@ -157,6 +166,9 @@ Since the workload is I/O-bound, language-level differences are secondary to fil
 
 ### 5. File Write
 
+![File Write – Large Workloads](charts/FileWrite_large.png)
+![File Write – Small Workloads](charts/FileWrite_small.png)
+
 **What this benchmark tests:**  
 Measures disk write performance for files of varying sizes.
 
@@ -169,33 +181,71 @@ File write performance is influenced heavily by buffering and filesystem behavio
 
 ---
 
-### 6. String Parsing and Concatenation
+### 6. String Parsing
+
+![String Parsing – Large Workloads](charts/StringParsing_large.png)
+![String Parsing – Small Workloads](charts/StringParsing_small.png)
 
 **What this benchmark tests:**  
-Measures performance of string parsing, concatenation, and substring operations over large inputs.
+Evaluates character-by-character string parsing performance over large input sizes, representative of real-world text processing workloads.
 
 **Observations:**
-- Rust significantly outperforms C++ across all tested input sizes.
-- The performance gap is largest at very large input sizes and remains consistent as input size decreases.
-- Rust completes string-heavy workloads in substantially less time than C++.
+- For very large inputs (1 billion and 500 million characters), Rust significantly outperforms C++.
+- At 100 million characters, Rust continues to maintain a strong performance advantage.
+- At small workloads (10 million characters), execution times are low for both languages, but Rust remains faster.
 
-These results indicate more efficient string handling and memory management in Rust for this workload.
+Overall, Rust demonstrates more efficient handling of large-scale string parsing operations.
 
 ---
 
-### 7. Vector Insertion and Deletion
+### 7. String Concatenation and Substring Search
+
+![String Concatenation and Substring Search - Large Workloads](charts/StringConcatenationSubstringSearch_large.png)
+![String Concatenation and Substring Search - Small Workloads](charts/StringConcatenationSubstringSearch_small.png)
 
 **What this benchmark tests:**  
-Evaluates dynamic array performance under repeated insertions and deletions.
+Measures the performance of repeated string concatenation combined with substring search operations.
 
 **Observations:**
-- For large workloads (1 billion and 500 million operations), Rust consistently outperforms C++.
-- At mid-range workloads (100 million operations), Rust maintains a measurable advantage.
-- For small workloads (10 million operations), execution times are nearly identical.
+- At large data sizes (500 MB), Rust is substantially faster than C++.
+- At 100 MB and 50 MB workloads, Rust maintains a clear performance advantage.
+- At smaller workloads (10 MB), Rust continues to outperform C++, though the gap narrows.
 
-Rust demonstrates better scalability for large-scale dynamic container operations, while differences diminish at smaller scales.
+These results indicate more efficient string handling and memory management in Rust for complex string operations.
 
 ---
+
+### 8. Dynamic Allocation and Free
+
+![Dynamic Allocation and Free - Large Workloads](charts/DynamicAllocation_large.png)
+![Dynamic Allocation and Free - Small Workloads](charts/DynamicAllocation_small.png)
+
+**What this benchmark tests:**  
+Evaluates dynamic memory allocation and deallocation performance under increasing allocation counts.
+
+**Observations:**
+- At very high allocation counts (100 million and 50 million allocations), Rust performs significantly faster than C++.
+- At 10 million allocations, Rust maintains a noticeable advantage.
+- At 1 million allocations, performance differences reduce, with both languages showing similar execution times.
+
+Rust’s allocator demonstrates better scalability under heavy allocation pressure.
+
+---
+
+### 9. Vector Insertion and Deletion
+
+![Vector Insertion and Deletion - Large Workloads](charts/Vector_large.png)
+![Vector Insertion and Deletion - Small Workloads](charts/Vector_small.png)
+
+**What this benchmark tests:**  
+Measures dynamic container performance through repeated insertions and deletions in a vector-like data structure.
+
+**Observations:**
+- At extremely large workloads (1 billion and 500 million insertions and deletions), Rust outperforms C++.
+- At 100 million operations, Rust continues to show better performance.
+- At smaller workloads (10 million operations), execution times are very close, with C++ being marginally faster.
+
+This benchmark highlights Rust’s stronger scalability for large dynamic container workloads.
 
 ## Results Summary
 
