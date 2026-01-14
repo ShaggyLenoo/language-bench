@@ -7,194 +7,196 @@
 </head>
 <body>
 
-<header>
-  <h1>Language Bench</h1>
-  <p class="subtitle">C++ vs Rust Performance Benchmarking</p>
+<header class="site-header">
+  <div class="container">
+    <h1>Language Bench</h1>
+    <p class="tagline">A systematic performance comparison of C++ and Rust</p>
 
-  <nav>
-    <a href="#overview">Overview</a>
-    <a href="#motivation">Motivation</a>
-    <a href="#benchmarks">Benchmarks</a>
-    <a href="#methodology">Methodology</a>
-    <a href="#system">System</a>
-    <a href="#toolchain">Toolchain</a>
-    <a href="#results">Results</a>
-    <a href="#summary">Summary</a>
-    <a href="#limitations">Limitations</a>
-    <a href="#future">Future</a>
-    <a href="#repo">GitHub</a>
-  </nav>
+    <nav class="navbar">
+      <a href="#overview">Overview</a>
+      <a href="#benchmarks">Benchmarks</a>
+      <a href="#methodology">Methodology</a>
+      <a href="#results">Results</a>
+      <a href="#summary">Summary</a>
+      <a href="#repo">GitHub</a>
+    </nav>
+  </div>
 </header>
 
-<section id="overview">
+<main class="container">
+
+<section id="overview" class="section">
   <h2>Overview</h2>
   <p>
-    Language Bench is a systematic performance benchmarking study comparing
-    <strong>C++</strong> and <strong>Rust</strong> across a range of workloads
-    commonly encountered in systems programming.
+    This project presents a detailed performance benchmarking study comparing
+    <strong>C++</strong> and <strong>Rust</strong> across workloads commonly found
+    in systems programming.
   </p>
   <p>
-    The objective of this project is not to declare a universally faster language,
-    but to analyze how execution performance, scalability, and runtime behavior
-    vary depending on workload characteristics and scale.
+    Instead of relying on synthetic microbenchmarks from the internet, this study
+    builds a <strong>reproducible benchmarking framework</strong> that evaluates
+    execution behavior under controlled conditions, with multiple runs and
+    statistical analysis.
   </p>
 </section>
 
-<section id="motivation">
-  <h2>Motivation and Scope</h2>
-  <p>
-    While many online benchmarks exist, their results often depend on hardware,
-    compiler versions, and assumptions that may not align with real-world workloads.
-  </p>
-  <p>
-    This project focuses on building a <strong>reproducible benchmarking framework</strong>
-    that can be rerun on different systems, extended with new benchmarks, and used
-    to support data-driven engineering decisions.
-  </p>
-</section>
-
-<section id="benchmarks">
+<section id="benchmarks" class="section light">
   <h2>Benchmarks Implemented</h2>
-  <ol>
-    <li><strong>Summation Loop</strong> – Raw arithmetic throughput and loop efficiency</li>
-    <li><strong>Branch-Heavy Loop</strong> – Branch prediction and control-flow performance</li>
-    <li><strong>Fibonacci Recursion</strong> – Recursive call overhead and stack behavior</li>
-    <li><strong>File Read</strong> – Sequential disk read throughput</li>
-    <li><strong>File Write</strong> – Sequential disk write performance</li>
-    <li><strong>String Parsing</strong> – Character-by-character parsing efficiency</li>
-    <li><strong>String Concatenation and Substring Search</strong> – String growth and search cost</li>
-    <li><strong>Dynamic Allocation and Free</strong> – Heap allocation/deallocation overhead</li>
-    <li><strong>Vector Insertion and Deletion</strong> – Dynamic container manipulation</li>
-  </ol>
+  <ul>
+    <li>Summation Loop</li>
+    <li>Branch-Heavy Loop</li>
+    <li>Fibonacci Recursion</li>
+    <li>File Read</li>
+    <li>File Write</li>
+    <li>String Parsing</li>
+    <li>String Concatenation & Substring Search</li>
+    <li>Dynamic Allocation and Free</li>
+    <li>Vector Insertion and Deletion</li>
+  </ul>
 </section>
 
-<section id="methodology">
+<section id="methodology" class="section">
   <h2>Methodology</h2>
   <ul>
-    <li>Identical algorithms and workloads for C++ and Rust</li>
-    <li>Optimized compilation for both languages</li>
-    <li>Multiple runs per benchmark (typically five)</li>
+    <li>Identical algorithms and workloads for both languages</li>
+    <li>Optimized compilation (<code>-O3</code> for C++, <code>-O</code> for Rust)</li>
+    <li>Each benchmark executed multiple times</li>
     <li>Average execution time and standard deviation recorded</li>
-    <li>Benchmarks executed under identical system conditions</li>
-  </ul>
-
-  <h3>Large Workloads and Chunking</h3>
-  <p>
-    Extremely large workloads (e.g., 500 million or 1 billion operations) cannot
-    be executed in a single allocation due to memory constraints.
-    Such workloads were processed in fixed-size chunks while preserving the total
-    operation count.
-  </p>
-</section>
-
-<section id="system">
-  <h2>System Configuration</h2>
-  <ul>
-    <li><strong>CPU:</strong> Intel Core i5-1235U</li>
-    <li><strong>RAM:</strong> 8 GB</li>
-    <li><strong>OS:</strong> Windows 11 (24H2)</li>
+    <li>Large workloads executed using chunking to respect memory limits</li>
   </ul>
 </section>
 
-<section id="toolchain">
-  <h2>Toolchain and Build Configuration</h2>
-  <ul>
-    <li><strong>C++:</strong> g++ compiled with <code>-O3</code></li>
-    <li><strong>Rust:</strong> rustc compiled with <code>-O</code> (no Cargo release mode)</li>
-    <li><strong>Timing:</strong>
-      <ul>
-        <li>C++: <code>std::chrono</code></li>
-        <li>Rust: <code>std::time::Instant</code></li>
-      </ul>
-    </li>
-  </ul>
-</section>
-
-<section id="results">
-  <h2>Benchmark Results</h2>
+<section id="results" class="section dark">
+  <h2>Benchmark Results and Analysis</h2>
   <p class="note">
-    Charts below compare average execution time across workloads.
+    Each chart compares average execution time for C++ and Rust.
     Lower values indicate better performance.
   </p>
 
-  <h3>1. Summation Loop</h3>
-  <img src="charts/SummationLoop_large.png" class="chart">
-  <img src="charts/SummationLoop_small.png" class="chart">
+  <!-- 1 -->
+  <div class="benchmark">
+    <h3>1. Summation Loop</h3>
+    <p class="explanation">
+      This benchmark measures raw arithmetic throughput and loop execution efficiency.
+      It highlights how well each compiler optimizes tight, CPU-bound loops.
+    </p>
+    <img src="charts/SummationLoop_large.png">
+    <img src="charts/SummationLoop_small.png">
+  </div>
 
-  <h3>2. Branch-Heavy Loop</h3>
-  <img src="charts/BranchLoop_large.png" class="chart">
-  <img src="charts/BranchLoop_small.png" class="chart">
+  <!-- 2 -->
+  <div class="benchmark">
+    <h3>2. Branch-Heavy Loop</h3>
+    <p class="explanation">
+      This benchmark evaluates performance under frequent conditional branching.
+      Differences here are primarily influenced by branch prediction and control-flow handling.
+    </p>
+    <img src="charts/BranchLoop_large.png">
+    <img src="charts/BranchLoop_small.png">
+  </div>
 
-  <h3>3. Fibonacci Recursion</h3>
-  <img src="charts/FibonacciRecursion_large.png" class="chart">
-  <img src="charts/FibonacciRecursion_small.png" class="chart">
+  <!-- 3 -->
+  <div class="benchmark">
+    <h3>3. Fibonacci Recursion</h3>
+    <p class="explanation">
+      Recursive workloads stress function call overhead and stack management.
+      This benchmark exposes differences in recursion handling and call optimization.
+    </p>
+    <img src="charts/FibonacciRecursion_large.png">
+    <img src="charts/FibonacciRecursion_small.png">
+  </div>
 
-  <h3>4. File Read</h3>
-  <img src="charts/FileRead_large.png" class="chart">
-  <img src="charts/FileRead_small.png" class="chart">
+  <!-- 4 -->
+  <div class="benchmark">
+    <h3>4. File Read</h3>
+    <p class="explanation">
+      Measures sequential disk read throughput. Since this is I/O-bound,
+      results reflect buffering strategies and system call overhead.
+    </p>
+    <img src="charts/FileRead_large.png">
+    <img src="charts/FileRead_small.png">
+  </div>
 
-  <h3>5. File Write</h3>
-  <img src="charts/FileWrite_large.png" class="chart">
-  <img src="charts/FileWrite_small.png" class="chart">
+  <!-- 5 -->
+  <div class="benchmark">
+    <h3>5. File Write</h3>
+    <p class="explanation">
+      Evaluates sequential file write performance. OS-level buffering and
+      flush behavior strongly influence these results.
+    </p>
+    <img src="charts/FileWrite_large.png">
+    <img src="charts/FileWrite_small.png">
+  </div>
 
-  <h3>6. String Parsing</h3>
-  <img src="charts/StringParsing_large.png" class="chart">
-  <img src="charts/StringParsing_small.png" class="chart">
+  <!-- 6 -->
+  <div class="benchmark">
+    <h3>6. String Parsing</h3>
+    <p class="explanation">
+      This benchmark tests character-by-character parsing over large strings,
+      representing text-heavy workloads such as log processing.
+    </p>
+    <img src="charts/StringParsing_large.png">
+    <img src="charts/StringParsing_small.png">
+  </div>
 
-  <h3>7. String Concatenation and Substring Search</h3>
-  <img src="charts/StringConcatenationSubStringSearch_large.png" class="chart">
-  <img src="charts/StringConcatenationSubStringSearch_small.png" class="chart">
+  <!-- 7 -->
+  <div class="benchmark">
+    <h3>7. String Concatenation and Substring Search</h3>
+    <p class="explanation">
+      Measures the combined cost of growing strings and searching within them,
+      highlighting allocation behavior and string implementation efficiency.
+    </p>
+    <img src="charts/StringConcatenationSubStringSearch_large.png">
+    <img src="charts/StringConcatenationSubStringSearch_small.png">
+  </div>
 
-  <h3>8. Dynamic Allocation and Free</h3>
-  <img src="charts/DynamicAllocation_large.png" class="chart">
-  <img src="charts/DynamicAllocation_small.png" class="chart">
+  <!-- 8 -->
+  <div class="benchmark">
+    <h3>8. Dynamic Allocation and Free</h3>
+    <p class="explanation">
+      Focuses purely on heap allocation and deallocation performance,
+      exposing allocator efficiency under heavy memory churn.
+    </p>
+    <img src="charts/DynamicAllocation_large.png">
+    <img src="charts/DynamicAllocation_small.png">
+  </div>
 
-  <h3>9. Vector Insertion and Deletion</h3>
-  <img src="charts/Vector_large.png" class="chart">
-  <img src="charts/Vector_small.png" class="chart">
+  <!-- 9 -->
+  <div class="benchmark">
+    <h3>9. Vector Insertion and Deletion</h3>
+    <p class="explanation">
+      Tests dynamic container manipulation under large workloads,
+      stressing memory growth, element movement, and cache behavior.
+    </p>
+    <img src="charts/Vector_large.png">
+    <img src="charts/Vector_small.png">
+  </div>
+
 </section>
 
-<section id="summary">
+<section id="summary" class="section">
   <h2>Results Summary</h2>
   <ul>
-    <li>C++ performs strongly in tight arithmetic loops and some recursive workloads.</li>
-    <li>Rust shows advantages in branch-heavy, string-processing, and memory-intensive benchmarks.</li>
-    <li>Performance differences become clearer at larger workload sizes.</li>
-    <li>Smaller workloads often converge due to measurement overhead.</li>
+    <li>C++ performs well in tight arithmetic and some recursive workloads</li>
+    <li>Rust excels in branch-heavy, string-processing, and memory-intensive benchmarks</li>
+    <li>Performance differences grow with workload size</li>
+    <li>No language is universally faster — workload characteristics dominate</li>
   </ul>
 </section>
 
-<section id="limitations">
-  <h2>Limitations</h2>
-  <ul>
-    <li>Benchmarks executed on a single machine and operating system.</li>
-    <li>Results may vary across different hardware and compiler versions.</li>
-    <li>Multithreaded workloads were not included.</li>
-  </ul>
-</section>
-
-<section id="future">
-  <h2>Future Enhancements</h2>
-  <ul>
-    <li>Add multithreaded benchmarks</li>
-    <li>Introduce memory-pressure scenarios</li>
-    <li>Compare additional languages such as Go</li>
-    <li>Automate benchmark execution and result collection</li>
-  </ul>
-</section>
-
-<section id="repo">
+<section id="repo" class="section light">
   <h2>Repository</h2>
   <p>
-    Full source code, benchmark implementations, raw results, and documentation:
-    <br>
-    <a href="https://github.com/ShaggyLenoo/language-bench" target="_blank">
-      https://github.com/ShaggyLenoo/language-bench
-    </a>
+    Source code, raw data, charts, and documentation are available at:
   </p>
+  <a href="https://github.com/ShaggyLenoo/language-bench" target="_blank">
+    https://github.com/ShaggyLenoo/language-bench
+  </a>
 </section>
 
-<footer>
+</main>
+
+<footer class="site-footer">
   <p>© Language Bench — C++ vs Rust Performance Benchmarking</p>
 </footer>
 
