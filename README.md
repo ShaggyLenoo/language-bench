@@ -8,6 +8,11 @@ The benchmarks cover CPU-bound workloads, branch-heavy execution, recursion over
 
 Each benchmark was executed multiple times, and **average execution time** along with **standard deviation** was recorded to capture both performance and run-to-run stability.
 
+
+🔗 **Quick Links**
+- 🌐 **Benchmarking Website:** https://shaggylenoo.github.io/language-bench/
+- 📊 **Raw Data and Charts (Google Sheets):** https://docs.google.com/spreadsheets/d/1dq5R_SiZNLLnG3HRv5nI7fb26BDp2h8v44QNyywQqNw/edit?usp=sharing
+
 ---
 
 ## Benchmarks Implemented
