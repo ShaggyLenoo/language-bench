@@ -121,3 +121,42 @@ footer {
   border-top: 1px solid var(--border);
   margin-top: 60px;
 }
+
+.table-container {
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: white;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+th {
+  background: #f4f6f8;
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  margin-left: 10px;
+  padding: 4px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
