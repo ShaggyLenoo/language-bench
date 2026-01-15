@@ -6,6 +6,28 @@
   <title>Language Bench – C++ vs Rust Performance Benchmarking</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+  <script>
+function loadCSV(path, tableId) {
+  fetch(path)
+    .then(res => res.text())
+    .then(text => {
+      const rows = text.trim().split('\n').map(r => r.split(','));
+      let html = '<tr>' + rows[0].map(h => `<th>${h}</th>`).join('') + '</tr>';
+      for (let i = 1; i < rows.length; i++) {
+        html += '<tr>' + rows[i].map(c => `<td>${c}</td>`).join('') + '</tr>';
+      }
+      document.getElementById(tableId).innerHTML = html;
+    });
+}
+
+function toggleRaw() {
+  document.getElementById('raw-container').classList.toggle('hidden');
+}
+
+loadCSV('data/summary_results.csv', 'summary-table');
+loadCSV('data/raw_results.csv', 'raw-table');
+</script>
+
 <body>
 
 <header>
@@ -247,6 +269,28 @@
   </div>
 
 </section>
+
+ <h2 id="data">Benchmark Data</h2>
+
+<p>
+All benchmark measurements are published below for transparency and reproducibility.
+Summary results are shown first, followed by the complete raw dataset.
+</p>
+
+<h3>Summary Results</h3>
+<div class="table-container">
+  <table id="summary-table"></table>
+</div>
+
+<h3>
+  Raw Benchmark Data
+  <button onclick="toggleRaw()">Show / Hide</button>
+</h3>
+
+<div id="raw-container" class="table-container hidden">
+  <table id="raw-table"></table>
+</div>
+
 
 <!-- ================= SYSTEM ================= -->
 
